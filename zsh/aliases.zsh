@@ -16,5 +16,5 @@ alias k='kubectl'
 
 
 mount_brodmann33() {
-	sshfs brodmann-33:$1 /Users/amgonen/media/brodmann-33/$1 -o allow_other -o ro
+	sshfs brodmann-33:$1 ${HOME}/media/brodmann-33/$1 -o allow_other -o ro
 }

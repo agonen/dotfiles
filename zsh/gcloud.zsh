@@ -8,7 +8,7 @@ cdev() {
         gcloud compute ssh ubuntu@$1 --zone us-east1-c --project cortex-dev-244007
 }
 
-alias gls='gsutil ls '
+alias gsls='gsutil ls '
 
 alias gssh='gcloud compute ssh '
 
