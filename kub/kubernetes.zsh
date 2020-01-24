@@ -1,4 +1,4 @@
-alias k='kubectl'
+
 kkk() {
         kubectl exec -it $1 -- /bin/bash
 }
@@ -26,3 +26,6 @@ kdescribepod() {
         space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
         kubectl describe pod $1 --namespace $space
 }
+
+(( ${+commands[kubectl]} )) && alias kubectl='test -z $C_KUBE && C_KUBE=1 && source <(command kubectl completion zsh); command kubectl'
+alias k='kubectl'
