@@ -36,7 +36,7 @@
         branch = auto
         ui = true
 [core]
-        excludesfile = ~/.gitignore
+	excludesfile = /Users/amgonen/.gitignore_global
         editor = vim
 [apply]
         whitespace = nowarn
