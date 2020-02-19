@@ -28,7 +28,7 @@ kdescribepod() {
 }
 
 kpodstat(){
-        kubectl get pods --all-namespaces | grep -vE "default|kube-system"| awk  '{print $4}'  | sort | uniq -c | sort -nr
+        kubectl get pods --all-namespaces | grep -vE "default|kube-system|STATUS"| awk  '{print $4}'  | sort | uniq -c | sort -nr
 }
 
 kpodpending() {
