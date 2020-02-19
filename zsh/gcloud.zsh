@@ -1,16 +1,14 @@
-c() {
-        gcloud compute ssh ubuntu@$1 --zone us-east1-c
+cprod() {
+        gcloud compute ssh ubuntu@$1 --zone us-east1-c --project ${GCP_PROD_PROJECT}
 }
-cc() {
-        gcloud compute ssh ubuntu@$1 --zone us-central1-c
+ccprod() {
+        gcloud compute ssh ubuntu@$1 --zone us-central1-c --project ${GCP_PROD_PROJECT}
 }
 cdev() {
-        gcloud compute ssh ubuntu@$1 --zone us-east1-c --project cortex-dev-244007
+        gcloud compute ssh ubuntu@$1 --zone us-east1-c --project ${GCP_DEV_PROJECT}
 }
 
 alias gsls='gsutil ls '
-
-alias gssh='gcloud compute ssh '
 
 alias g='gcloud'
 alias gc='gcloud compute'

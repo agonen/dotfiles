@@ -12,6 +12,9 @@ then
   source ~/.localrc
 fi
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # all of our zsh files
 typeset -U config_files
 config_files=($ZSH/**/*.zsh)

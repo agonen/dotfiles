@@ -27,5 +27,14 @@ kdescribepod() {
         kubectl describe pod $1 --namespace $space
 }
 
+kpodstat(){
+        kubectl get pods --all-namespaces | grep -vE "default|kube-system"| awk  '{print $4}'  | sort | uniq -c | sort -nr
+}
+
+kpodpending() {
+        kubectl get pods --all-namespaces | grep -vE "default|kube-system" | grep Pending | sort -k 6
+}
+
+
 (( ${+commands[kubectl]} )) && alias kubectl='test -z $C_KUBE && C_KUBE=1 && source <(command kubectl completion zsh); command kubectl'
 alias k='kubectl'

@@ -55,5 +55,11 @@
 [credential]
 	helper = osxkeychain
 [user]
-	name = amihay
+	name = Amihay Gonen
 	email = amihay@brodmann17.com
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
