@@ -14,3 +14,15 @@ alias g='gcloud'
 alias gc='gcloud compute'
 
 #export GOOGLE_APPLICATION_CREDENTIALS=~/.gsutil/bd17-gcp-84cf3ce5ff0f.json
+#
+
+camihay() {
+	if [ "$1"="start" ]
+        then
+           gcloud compute instances start amihay-1 --zone us-central1-c --project ${GCP_PROD_PROJECT}
+        fi
+
+        gcloud compute ssh ubuntu@amihay-1 --zone us-central1-c --project ${GCP_PROD_PROJECT}
+}
+
+
