@@ -17,11 +17,7 @@ alias gc='gcloud compute'
 #
 
 camihay() {
-	if [ "$1"="start" ]
-        then
-           gcloud compute instances start amihay-1 --zone us-central1-c --project ${GCP_PROD_PROJECT}
-        fi
-
+        gcloud compute instances start amihay-1 --zone us-central1-c --project ${GCP_PROD_PROJECT}
         gcloud compute ssh ubuntu@amihay-1 --zone us-central1-c --project ${GCP_PROD_PROJECT}
 }
 
