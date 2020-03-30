@@ -1,3 +1,6 @@
+alias gsetproject_prod="gcloud config set project bd17-gcp"
+alias gsetproject_dev="gcloud config set project cortex-dev-244007"
+
 cprod() {
         gcloud compute ssh ubuntu@$1 --zone us-east1-c --project ${GCP_PROD_PROJECT}
 }
