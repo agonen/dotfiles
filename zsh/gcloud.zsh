@@ -20,8 +20,21 @@ alias gc='gcloud compute'
 #
 
 camihay() {
-        gcloud compute instances start amihay-1 --zone us-central1-c --project ${GCP_PROD_PROJECT}
-        gcloud compute ssh ubuntu@amihay-1 --zone us-central1-c --project ${GCP_PROD_PROJECT}
+	disk_name=$1
+	project_id=bd17-gcp
+	zone=us-central1-c
+	instance_name=amihay-1
+
+    gcloud compute instances start amihay-1 --zone us-central1-c --project ${GCP_PROD_PROJECT}
+    if [ "$disk_name" != "" ];
+    then 
+    	mount_dir="/home/ubuntu/user_mnt/disks/new_disk"
+		device_id=/dev/disk/by-id/google-${disk_name}
+		gcloud compute instances attach-disk ${instance_name} --mode="ro" --disk ${disk_name} --device-name ${disk_name} --project=${project_id}
+		gcloud compute ssh ubuntu@${instance_name} --project=${project_id} --command="mkdir -p ${mount_dir}"
+		gcloud compute ssh ubuntu@${instance_name} --project=${project_id} --command="sudo mount -o ro,discard,defaults,nofail ${device_id} ${mount_dir}"
+	fi
+    gcloud compute ssh ubuntu@amihay-1 --zone us-central1-c --project ${GCP_PROD_PROJECT}
 }
 
 gdiskslist() {
