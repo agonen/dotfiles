@@ -1,3 +1,7 @@
+project_id="bd17-gcp"
+zone=us-central1-c
+instance_name=amihay-1
+
 alias gsetproject_prod="gcloud config set project bd17-gcp"
 alias gsetproject_dev="gcloud config set project cortex-dev-244007"
 
@@ -19,22 +23,25 @@ alias gc='gcloud compute'
 #export GOOGLE_APPLICATION_CREDENTIALS=~/.gsutil/bd17-gcp-84cf3ce5ff0f.json
 #
 
-camihay() {
-	disk_name=$1
+cstartvm() {
+	disk_name=$2
+	mode=${3:-ro}
+	instance_name=${1:-amihay-1}
 	project_id=bd17-gcp
 	zone=us-central1-c
-	instance_name=amihay-1
 
-    gcloud compute instances start amihay-1 --zone us-central1-c --project ${GCP_PROD_PROJECT}
+	echo "starting ${intance_name} with ${disk_name} mode ${mode}"
+	gcloud compute instances start ${instance_name} --zone us-central1-c --project ${GCP_PROD_PROJECT}
     if [ "$disk_name" != "" ];
     then 
     	mount_dir="/home/ubuntu/user_mnt/disks/new_disk"
 		device_id=/dev/disk/by-id/google-${disk_name}
-		gcloud compute instances attach-disk ${instance_name} --mode="ro" --disk ${disk_name} --device-name ${disk_name} --project=${project_id}
+		gcloud compute instances attach-disk ${instance_name} --mode="${mode}" --disk ${disk_name} --device-name ${disk_name} --project=${project_id}
 		gcloud compute ssh ubuntu@${instance_name} --project=${project_id} --command="mkdir -p ${mount_dir}"
-		gcloud compute ssh ubuntu@${instance_name} --project=${project_id} --command="sudo mount -o ro,discard,defaults,nofail ${device_id} ${mount_dir}"
+		gcloud compute ssh ubuntu@${instance_name} --project=${project_id} --command="sudo umount ${mount_dir}"
+		gcloud compute ssh ubuntu@${instance_name} --project=${project_id} --command="sudo mount -o ${mode},discard,defaults,nofail ${device_id} ${mount_dir}"
 	fi
-    gcloud compute ssh ubuntu@amihay-1 --zone us-central1-c --project ${GCP_PROD_PROJECT}
+    gcloud compute ssh ubuntu@${instance_name} --zone us-central1-c --project ${GCP_PROD_PROJECT}
 }
 
 gdiskslist() {
