@@ -47,3 +47,5 @@ cstartvm() {
 gdiskslist() {
   gcloud compute instances list --filter="disks[].deviceName~cortex-read-only*" --format="value(name,disks[].deviceName)"| cut -d';' -f2| sort|uniq |grep cortex
 }
+
+alias g_activeate_brodmann="gcloud config configurations activate brodmann-config"
