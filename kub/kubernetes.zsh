@@ -22,6 +22,11 @@ kdeljob() {
 kgetpods() {
         kubectl get pods --all-namespaces | grep -vE "default|kube-system"
 }
+
+kgetpods_aggergator(){
+      kubectl get pods --all-namespaces | grep -vE "default|kube-system"| grep aggergator
+}
+
 kdescribepod() {
         space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
         kubectl describe pod $1 --namespace $space
