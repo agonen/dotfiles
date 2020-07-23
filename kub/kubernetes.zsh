@@ -7,9 +7,30 @@ kk() {
         kubectl exec -it $1 -n $space -- /bin/bash
 }
 klogs() {
-        space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
-        kubectl logs $2 $1 --namespace $space
+        pod=$1;
+        if [[ $pod == aggergator* ]]   ; then
+             space=enricher
+        else
+            echo "Unknown namespace"
+        fi
+        kubectl logs $pod --namespace $space
 }
+
+kdispatcher() {
+    dispatcher_pod=`kubectl get pods --all-namespaces | grep dispatcher|awk '{print $2}'`
+    echo dispatcher=$dispatcher_pod
+    command_to_do=$1
+    shift
+    case ${command_to_do} in
+        log)
+            kubectl -f logs $dispatcher_pod --namespace default $*
+            ;;
+        bash)
+            kubectl exec -it ${dispatcher_pod} --namespace default -- /bin/bash
+            ;;
+    esac
+}
+
 kdelpod() {
         space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
         kubectl delete pod $1 --namespace $space
@@ -21,6 +42,14 @@ kdeljob() {
 }
 kgetpods() {
         kubectl get pods --all-namespaces | grep -vE "default|kube-system"
+}
+
+kgetpods_enrichers(){
+      kubectl get pods --all-namespaces | grep -vE "default|kube-system"| grep enricher
+}
+
+kgetpods_detectors(){
+      kubectl get pods --all-namespaces | grep -vE "default|kube-system"| grep detetcors
 }
 
 kgetpods_aggergator(){
