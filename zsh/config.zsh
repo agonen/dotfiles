@@ -169,3 +169,6 @@ alias go_cov="go test ./... -coverprofile cp.out && go tool cover -html=cp.out"
 
 # to enable parallel running see https://stackoverflow.com/questions/50168647/multiprocessing-causes-python-to-crash-and-gives-an-error-may-have-been-in-progr
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+export BAT_THEME="TwoDark"
+
+alias cat=bat

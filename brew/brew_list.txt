@@ -130,3 +130,4 @@ zimg
 zsh
 zsh-completions
 zsh-syntax-highlighting
+bat

@@ -23,7 +23,7 @@ kdispatcher() {
     shift
     case ${command_to_do} in
         log)
-            kubectl -f logs $dispatcher_pod --namespace default $*
+            kubectl logs $dispatcher_pod --namespace default $*
             ;;
         bash)
             kubectl exec -it ${dispatcher_pod} --namespace default -- /bin/bash
