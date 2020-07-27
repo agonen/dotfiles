@@ -8,11 +8,16 @@ kk() {
 }
 klogs() {
         pod=$1;
+        if [[ $pod == object* ]]   ; then
+             space=enricher
+	fi
+        if [[ $pod == distance* ]]   ; then
+             space=enricher
+	fi
         if [[ $pod == aggergator* ]]   ; then
              space=enricher
-        else
-            echo "Unknown namespace"
-        fi
+	fi
+
         kubectl logs $pod --namespace $space
 }
 
