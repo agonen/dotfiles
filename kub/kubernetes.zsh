@@ -14,6 +14,9 @@ klogs() {
         if [[ $pod == distance* ]]   ; then
              space=enricher
 	fi
+        if [[ $pod == detector* ]]   ; then
+             space=detector
+	fi
         if [[ $pod == aggergator* ]]   ; then
              space=enricher
 	fi
