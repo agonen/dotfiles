@@ -57,6 +57,14 @@ kgetpods_detectors(){
       kubectl get pods --namespace detector  
 }
 
+kgetpods_running_enrichers(){
+      kubectl get pods --namespace enricher  --field-selector status.phase=Running
+}
+
+kgetpods_running_detectors(){
+      kubectl get pods --namespace detector  --field-selector status.phase=Running
+}
+
 kgetpods_aggergator(){
       kubectl get pods --namespace enricher  | grep aggergator
 }
