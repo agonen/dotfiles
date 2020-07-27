@@ -50,15 +50,15 @@ kgetpods() {
 }
 
 kgetpods_enrichers(){
-      kubectl get pods --all-namespaces | grep -vE "default|kube-system"| grep enricher
+      kubectl get pods --namespace enricher  
 }
 
 kgetpods_detectors(){
-      kubectl get pods --all-namespaces | grep -vE "default|kube-system"| grep detetcors
+      kubectl get pods --namespace detector  
 }
 
 kgetpods_aggergator(){
-      kubectl get pods --all-namespaces | grep -vE "default|kube-system"| grep aggergator
+      kubectl get pods --namespace enricher  | grep aggergator
 }
 
 kdescribepod() {
