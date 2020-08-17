@@ -1,11 +1,92 @@
+alias k='kubectl'
 
 kkk() {
-        kubectl exec -it $1 -- /bin/bash
+  kubectl exec -it $1 -- /bin/bash
 }
+
 kk() {
-        space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
-        kubectl exec -it $1 -n $space -- /bin/bash
+  space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
+  kubectl exec -it $1 -n $space -- /bin/bash
 }
+
+kkm() {
+  space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
+  kubectl exec -it $1 -n $space --cluster=gke_bd17-gcp_us-central1-c_cluster-main -- /bin/bash
+}
+
+knvidia() {
+  space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
+  kubectl exec -it $1 -n $space -- nvidia-smi
+}
+
+klogs() {
+  space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
+  kubectl logs $2 $1 --namespace $space
+}
+
+kdelpod() {
+  space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
+  kubectl delete pod $1 --namespace $space
+}
+
+kdeljob() {
+  space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
+  job=$(echo $1 | cut -d'-' -f1-4)
+  kubectl delete job $job --namespace $space
+}
+
+kgetpods() {
+  kubectl get pods --all-namespaces | grep -vE "default|kube-system"
+}
+
+kdescribepod() {
+  space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
+  kubectl describe pod $1 --namespace $space
+}
+kdp() {
+  space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
+  kubectl describe pod $1 --namespace $space
+}
+
+kpodstat(){
+        kubectl get pods --all-namespaces | grep -vE "default|kube-system|STATUS"| awk  '{print $4}'  | sort | uniq -c | sort -nr
+}
+kpodpending() {
+        kubectl get pods --all-namespaces | grep -vE "default|kube-system" | grep Pending | sort -k 6
+}
+
+ktrain() {
+  gcloud container clusters get-credentials cluster-main --zone us-central1-c
+}
+
+ktrainnew() {
+  gcloud container clusters get-credentials cluster-train --zone us-central1-c
+}
+
+kbenchmark() {
+  gcloud container clusters get-credentials cluster-regular-us-central1-c --zone us-central1-c
+}
+
+kmedulla() {
+  gcloud container clusters get-credentials cluster-medulla --zone us-central1-c
+}
+
+kgetpodsbytime() {
+        kubectl get pods --all-namespaces --sort-by=.metadata.creationTimestamp | grep -vE "kube-system"
+}
+
+kdlogs() {
+        kubectl logs $2 $1 --namespace detector -f
+}
+
+kelogs() {
+        kubectl logs $2 $1 --namespace enricher -f
+}
+
+
+#----------------------------------------------------------------------
+
+
 klogs() {
         pod=$1;
         if [[ $pod == object* ]]   ; then
@@ -86,5 +167,5 @@ kpodpending() {
 }
 
 
-(( ${+commands[kubectl]} )) && alias kubectl='test -z $C_KUBE && C_KUBE=1 && source <(command kubectl completion zsh); command kubectl'
-alias k='kubectl'
+# (( ${+commands[kubectl]} )) && alias kubectl='test -z $C_KUBE && C_KUBE=1 && source <(command kubectl completion zsh); command kubectl'
+# alias k='kubectl'
