@@ -43,7 +43,8 @@ kdescribepod() {
   space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
   kubectl describe pod $1 --namespace $space
 }
-kdp() {
+
+kdp1() {
   space=$(echo $1 | awk '{n=split($0, a, "-"); printf("%s-%s\n", a[n-3], a[n-2])}')
   kubectl describe pod $1 --namespace $space
 }
@@ -69,6 +70,10 @@ kbenchmark() {
 
 kmedulla() {
   gcloud container clusters get-credentials cluster-medulla --zone us-central1-c
+}
+
+kgetpodsbytime_enricher() {
+        kubectl get pods -nenricher --sort-by=.metadata.creationTimestamp | grep -vE "kube-system"
 }
 
 kgetpodsbytime() {
@@ -118,6 +123,11 @@ kdispatcher() {
             kubectl exec -it ${dispatcher_pod} --namespace default -- /bin/bash
             ;;
     esac
+}
+
+klogin() {
+            kubectl exec -it $1 --namespace $2 -- /bin/bash
+
 }
 
 kdelpod() {
