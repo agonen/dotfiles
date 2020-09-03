@@ -57,10 +57,6 @@ kpodpending() {
 }
 
 ktrain() {
-  gcloud container clusters get-credentials cluster-main --zone us-central1-c
-}
-
-ktrainnew() {
   gcloud container clusters get-credentials cluster-train --zone us-central1-c
 }
 
