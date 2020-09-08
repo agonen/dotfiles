@@ -35,8 +35,16 @@ kdeljob() {
   kubectl delete job $job --namespace $space
 }
 
-kgetpods() {
+kpods() {
   kubectl get pods --all-namespaces | grep -vE "default|kube-system"
+}
+
+kedesc() {
+  kubectl describe pod $1 --namespace enricher
+}
+
+kddesc() {
+  kubectl describe pod $1 --namespace detector
 }
 
 kdescribepod() {
@@ -147,11 +155,11 @@ kgetpods_detectors(){
       kubectl get pods --namespace detector  
 }
 
-kgetpods_running_enrichers(){
+kegetpods_running(){
       kubectl get pods --namespace enricher  --field-selector status.phase=Running
 }
 
-kgetpods_running_detectors(){
+kdgetpods_running(){
       kubectl get pods --namespace detector  --field-selector status.phase=Running
 }
 
