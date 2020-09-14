@@ -4,11 +4,9 @@ alias reload!='. ~/.zshrc'
 alias gssh='gcloud compute ssh '
 alias cls='clear' # Good 'ol Clear Screen command
 
-alias k='kubectl ' # for kube
 
 alias tailf="tail -f "
 
-alias k='kubectl'
 
 alias tabview='vd'
 

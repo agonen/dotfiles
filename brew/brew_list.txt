@@ -132,3 +132,4 @@ zsh-completions
 zsh-syntax-highlighting
 bat
 autojump
+rg

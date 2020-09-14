@@ -1,4 +1,7 @@
 # shortcut to this dotfiles path is $ZSH
+[[ -s /Users/amgonen/.autojump/etc/profile.d/autojump.sh ]] && source /Users/amgonen/.autojump/etc/profile.d/autojump.sh
+
+autoload -U compinit && compinit -u
 source ~/.zsh/zsh-apple-touchbar/zsh-apple-touchbar.zsh
 export ZSH=$HOME/.dotfiles
 

@@ -7,6 +7,7 @@ alias gsetproject_dev="gcloud config set project cortex-dev-244007"
 
 alias g="gcloud"
 alias g_ls="gsutil ls"
+alias g_cat="gsutil cat"
 
 cprod() {
         gcloud compute ssh ubuntu@$1 --zone us-east1-c --project ${GCP_PROD_PROJECT}

@@ -1,4 +1,4 @@
-alias k='kubectl'
+alias kube='kubectl'
 
 kkk() {
   kubectl exec -it $1 -- /bin/bash
