@@ -133,3 +133,5 @@ zsh-syntax-highlighting
 bat
 autojump
 rg
+parquet-tools
+dos2unix
