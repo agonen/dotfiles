@@ -1,5 +1,7 @@
 alias reload!='. ~/.zshrc'
 
+alias sublime='reattach-to-user-namespace sublime'
+alias open='reattach-to-user-namespace open'
 
 alias gssh='gcloud compute ssh '
 alias cls='clear' # Good 'ol Clear Screen command
