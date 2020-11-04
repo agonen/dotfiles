@@ -2,6 +2,30 @@ project_id="bd17-gcp"
 zone=us-central1-c
 instance_name=amihay-1
 
+
+create_disk() {
+  disk_name=$1
+  snapshot_number=$2
+
+  if [ "$disk_name" != "" || "${snapshot_number}" != "" ];
+  then 
+      echo missing parameters disk_name snapshot
+      return
+  fi 
+
+  project_id="bd17-gcp"
+  zone=us-central1-c
+
+  echo creating disk:${disk_name} from ${snapshot_name}
+  disksize=2000
+  gcloud compute disks create ${disk_name} \
+      --description='read-only volumes for research data ' \
+      --labels=system=medulla,creator=$USERNAME,status=inprogress \
+      --size=${disksize}GB --type=pd-ssd --source-snapshot=${snapshot_name} \
+      --zone=${zone} --project=${project_id}
+    
+}
+
 mount_disk() {
   disk_name=${1:-disk_name}
   mount_dir="/home/ubuntu/user_mnt/disks/new_disk"
@@ -78,9 +102,9 @@ alias gc='gcloud compute'
 #
 
 cstartvm() {
-	disk_name=$2
-	mode=${3:-ro}
-	instance_name=${1:-amihay-1}
+	disk_name=$1
+	mode=${2:-ro}
+	instance_name=${3:-amihay-1}
 	project_id=bd17-gcp
 	zone=us-central1-c
 
