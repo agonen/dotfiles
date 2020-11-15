@@ -5,9 +5,9 @@ instance_name=amihay-1
 
 create_disk() {
   disk_name=$1
-  snapshot_number=$2
-
-  if [ "$disk_name" != "" || "${snapshot_number}" != "" ];
+  snapshot_name=$2
+  
+  if [ "$disk_name" = "" ] || [ "${snapshot_name}" = "" ];
   then 
       echo missing parameters disk_name snapshot
       return
