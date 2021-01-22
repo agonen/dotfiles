@@ -74,3 +74,7 @@ if [ -f '/Users/amgonen/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/amgonen
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/amgonen/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/amgonen/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Set breakpoint() in Python to call pudb
+export PYTHONBREAKPOINT="pudb.set_trace"
+

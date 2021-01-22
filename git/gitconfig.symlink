@@ -54,7 +54,7 @@
         # Setting to git 2.0 default to suppress warning message
 	default = current
 [credential]
-	helper = osxkeychain
+	helper = store
 [user]
 	name = Amihay Gonen
 	email = amihay@brodmann17.com
@@ -66,3 +66,9 @@
 	trustExitCode = true
 [commit]
 	template = /Users/amgonen/.stCommitMsg
+[http]
+	postBuffer = 1048576000
+[url "https://bitbucket.org/"]
+	insteadOf = bitbucket.org:
+[url "https://"]
+	insteadOf = git://
