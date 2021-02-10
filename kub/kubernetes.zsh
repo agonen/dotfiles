@@ -172,6 +172,10 @@ kdescribepod() {
         kubectl describe pod $1 --namespace $space
 }
 
+kclouddemo_prod_logs() {
+    kubectl logs $(kubectl get pod | grep prod  | grep Running | awk '{print $1}') -f
+}
+
 kclouddemo_dev_logs() {
     kubectl logs $(kubectl get pod | grep dev  | grep Running | awk '{print $1}') -f
 }
