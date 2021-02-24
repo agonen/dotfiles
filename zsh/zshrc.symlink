@@ -1,10 +1,9 @@
 # shortcut to this dotfiles path is $ZSH
-[[ -s /Users/amgonen/.autojump/etc/profile.d/autojump.sh ]] && source /Users/amgonen/.autojump/etc/profile.d/autojump.sh
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
 autoload -U compinit && compinit -u
-source ~/.zsh/zsh-apple-touchbar/zsh-apple-touchbar.zsh
 export ZSH=$HOME/.dotfiles
-
+export ZSH_CUSTOM=~/.oh-my-zsh/custom
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/git
 
@@ -61,7 +60,6 @@ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 
-cf_breaer=eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDk1MzBlMWZmOTA4M2RkNWVlYWEwNmJlMmNlNDM3ZjQ5YzkwNWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIzMjU1NTk0MDU1OS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjMyNTU1OTQwNTU5LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAxMTgwODk3NzUxOTE3OTE4MzU1IiwiaGQiOiJicm9kbWFubjE3LmNvbSIsImVtYWlsIjoiYW1paGF5QGJyb2RtYW5uMTcuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJVdXdYTXhrWXdzakpfWXdrT3ZzSFdRIiwiaWF0IjoxNTk5MzQ4MDk4LCJleHAiOjE1OTkzNTE2OTh9.T7E8fpRfrUAAdMwh1jqbwbpvpXLWouBIIXaS454PhJdXX3WGleb3X8SOAnKkLDvUThNAnuPJEBOkV18cik1GXrAf2lggUK1q_y3uKoBCjV1F5c0Ru-mPSzwxdcHWXIc1j9IZoVU1QCCKs4bmzbyHJzrjxUk9lDrmQNFdpt3Cp4xLb3Z7rKUD7uppiBHacJfcV6TfMZ4z3fnwn-R5OeoyAyPKa89c3SPa_n2xFlA6tjmuSDbOjTRl0EY8yiDgcjks4-1SY68qOcTdJsvLqDFAZzmg8F_zJv3z4DtWes3UvFOognX7Hgoi3xgFcVw8o4OCaD8PtJIlCE_j5pS-qLuYbw
 
 
 # >>>> Vagrant command completion (start)
@@ -69,12 +67,8 @@ fpath=(/opt/vagrant/embedded/gems/2.2.10/gems/vagrant-2.2.10/contrib/zsh $fpath)
 compinit
 # <<<<  Vagrant command completion (end)
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/amgonen/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/amgonen/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/amgonen/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/amgonen/google-cloud-sdk/completion.zsh.inc'; fi
-
 # Set breakpoint() in Python to call pudb
 export PYTHONBREAKPOINT="pudb.set_trace"
 
+plugins=(zsh-apple-touchbar)
+source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme

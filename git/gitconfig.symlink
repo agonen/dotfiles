@@ -1,6 +1,6 @@
 # Local/private config goes in the include
 [include]
-	path = /Users/amgonen/.gitalias.txt
+	path = /Users/amihayg/.gitalias.txt
 [hub]
         protocol = https
 [alias]
@@ -36,7 +36,7 @@
         branch = auto
         ui = true
 [core]
-	excludesfile = /Users/amgonen/.gitignore_global
+	excludesfile = /Users/amihayg/.gitignore_global
         editor = vim
 	compression = 9
 [apply]
@@ -57,7 +57,7 @@
 	helper = store
 [user]
 	name = Amihay Gonen
-	email = amihay@brodmann17.com
+	email = amihayg@elementor.com
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -65,7 +65,7 @@
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
-	template = /Users/amgonen/.stCommitMsg
+	template = /Users/amihayg/.stCommitMsg
 [http]
 	postBuffer = 1048576000
 [url "https://bitbucket.org/"]

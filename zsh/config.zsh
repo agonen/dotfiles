@@ -42,7 +42,7 @@ bindkey '^?' backward-delete-char
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/amgonen/.oh-my-zsh"
+export ZSH="/Users/amihayg/.oh-my-zsh"
 source ~/.zplug/init.zsh
 
 # Set name of the theme to load --- if set to "random", it will
