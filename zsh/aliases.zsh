@@ -12,10 +12,5 @@ alias tailf="tail -f "
 
 alias tabview='vd'
 
-mount_brodmann33() {
-	sshfs brodmann-33:$1 ${HOME}/media/brodmann-33/$1 -o allow_other -o ro
-}
-
-start_vpn() {
-  sudo openfortivpn -c /etc/openfortivpn/my-config  > /dev/null &
-}
+alias redshift_prod_amihay="pgcli -h redshift-elementor-prod.cwn3tgmpcufx.us-east-1.redshift.amazonaws.com -u amihayg -d dwh -p 5439"
+alias redshift_prod_su="pgcli -h redshift-elementor-prod.cwn3tgmpcufx.us-east-1.redshift.amazonaws.com -u awsuser -d dwh -p 5439"

@@ -136,3 +136,5 @@ rg
 parquet-tools
 dos2unix
 coreutils
+gh
+node
