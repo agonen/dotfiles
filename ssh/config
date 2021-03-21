@@ -1,3 +1,14 @@
+Host *.compute-1.amazonaws.com
+    User ec2-user
+    IdentityFile ~/.ssh/dwh-202102.pem
+
+
+Host supers 
+    HostName ec2-3-236-80-155.compute-1.amazonaws.com
+    User ec2-user
+    IdentityFile ~/.ssh/dwh-202102.pem
+
+
 Host api-marketing
     HostName 3.217.198.209
     User ec2-user
