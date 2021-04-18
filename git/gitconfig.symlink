@@ -72,3 +72,5 @@
 	insteadOf = bitbucket.org:
 [url "https://"]
 	insteadOf = git://
+[pull]
+	rebase = false
