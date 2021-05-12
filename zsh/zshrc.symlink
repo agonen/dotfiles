@@ -72,3 +72,5 @@ export PYTHONBREAKPOINT="pudb.set_trace"
 
 plugins=(zsh-apple-touchbar)
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+export PATH="$HOME/.poetry/bin:$PATH"
