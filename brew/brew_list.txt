@@ -138,3 +138,4 @@ dos2unix
 coreutils
 gh
 node
+brew tap liujianping/tap && brew install job
