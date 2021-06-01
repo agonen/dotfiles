@@ -139,3 +139,4 @@ coreutils
 gh
 node
 brew tap liujianping/tap && brew install job
+brew install httpie
